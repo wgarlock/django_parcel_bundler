@@ -1,24 +1,33 @@
 {
   "name": "django_parcel_bundler",
-  "type": "module",
-  "version": "1.0.1",
+  "version": "1.0.11",
   "description": "quick tools to help develop static assets for django projects",
-  "main": "index.js",
   "scripts": {
-    "build": "node ./django_parcel_bundler/build.js",
-    "watch": "node ./django_parcel_bundler/watch.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "files":[
-    "build.js",
-    "watch.js",
-    "parcel_support.js"
-  ],
-  "author": "Wes Garlock",
-  "license": "MIT",
-  "engines": {
-    "node": ">= 14.0.0"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "parcel-bundler": "^1.12.4"
-  }
+    "arg": "^5.0.0",
+    "esm": "^3.2.25",
+    "inquirer": "^7.3.3",
+    "ncp": "^2.0.0"
+  },
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wgarlock/django_parcel_bundler.git"
+  },
+  "bin": {
+    "@wgarlock/django-parcel-bundler": "bin/django-parcel-bundler",
+    "django-parcel-bundler": "bin/django-parcel-bundler"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ]
 }

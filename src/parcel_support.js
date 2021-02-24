@@ -20,13 +20,16 @@ export default function getAllFiles (currentDir, dirPath, parcelFunction, arrayO
                 ncp(currentFile, destination, function (err) {
                     if (err) {
                         console.error(err)
-                    } else {
-                        console.log('success!')
                     }
                 })
             } else {
-                parcelFunction(dirPath + '/' + file)
-                arrayOfFiles = getAllFiles(currentDir, dirPath + '/' + file, parcelFunction, arrayOfFiles)
+                let opeation_path = dirPath + '/' + file
+                const inEnv = opeation_path.includes(".venv")
+                const inNode = opeation_path.includes("node_modules")
+                if (!inEnv && !inNode){
+                    parcelFunction(opeation_path)
+                    arrayOfFiles = getAllFiles(currentDir, opeation_path, parcelFunction, arrayOfFiles)
+                }
             }
         } else {
             arrayOfFiles.push(path.join(dirPath, '/', file))
