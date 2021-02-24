@@ -1,0 +1,24 @@
+{
+  "name": "django_parcel_bundler",
+  "type": "module",
+  "version": "1.0.1",
+  "description": "quick tools to help develop static assets for django projects",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./django_parcel_bundler/build.js",
+    "watch": "node ./django_parcel_bundler/watch.js"
+  },
+  "files":[
+    "build.js",
+    "watch.js",
+    "parcel_support.js"
+  ],
+  "author": "Wes Garlock",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 14.0.0"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
