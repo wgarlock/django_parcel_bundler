@@ -13,7 +13,7 @@ function parcelBuild (path) {
         const cmd = 'NODE_ENV=production parcel build'
         const outDir = path + '/static'
         fs.rmdirSync(outDir, { recursive: true })
-        const args = [staticSrc + '/index.js', '--out-dir ' + outDir, '--out-file ' + packageJson.name + '-' + file + '.js', '--public-url /static/']
+        const args = [staticSrc + '/index.js', '--out-dir ' + outDir, '--out-file ' + file + '.'+ packageJson.version + '.js', '--public-url /static/']
         console.log(file)
         console.log(cmd)
         console.log(args)

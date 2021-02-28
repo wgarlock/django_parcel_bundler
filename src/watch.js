@@ -9,7 +9,7 @@ function parcelWatch (path) {
     
     if (fs.existsSync(staticSrc)) {
         const cmd = 'NODE_ENV=development parcel watch'
-        const args = [staticSrc + '/index.js', '--out-dir ' + path + '/static', '--out-file tns_mp_app-' + file + '.js', '--public-url /static/']
+        const args = [staticSrc + '/index.js', '--out-dir ' + path + '/static', '--out-file ' + file + '.js', '--public-url /static/']
         console.log(cmd, args)
         const results = spawn(cmd, args, { shell: true })
         results.stdout.on('data', (data) => {
