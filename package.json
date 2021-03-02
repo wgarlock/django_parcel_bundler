@@ -1,6 +1,6 @@
 {
   "name": "django_parcel_bundler",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "description": "quick tools to help develop static assets for django projects",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,18 @@
   "dependencies": {
     "arg": "^5.0.0",
     "esm": "^3.2.25",
+    "husky": "^5.1.3",
     "inquirer": "^7.3.3",
+    "lint-staged": "^10.5.4",
     "ncp": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "snyk": "^1.466.0"
   },
   "main": "src/index.js",
   "repository": {
@@ -29,5 +39,16 @@
   "files": [
     "bin/",
     "src/"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/**": [
+      "npx eslint src/** --fix --ignore-path ./.eslintignore"
+    ],
+    "*.js": "eslint --cache --fix"
+  }
 }
