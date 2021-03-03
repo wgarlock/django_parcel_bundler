@@ -8,19 +8,19 @@ function parcelWatch (path) {
   const file = path.substring(path.lastIndexOf('/') + 1)
 
   if (fs.existsSync(staticSrc)) {
-    const entryPoints = staticSrc + '/entry_points.json'
-    const outDir = path + '/static'
+    const entryPoints = `${staticSrc}/entry_points.json`
+    const outDir = `${path}/static`
     if (fs.existsSync(entryPoints)) {
       const entryPointsData = JSON.parse(fs.readFileSync(entryPoints, 'utf8'))
       entryPointsData.entry_points.forEach(element => {
         const splitName = element.split('.')[0]
-        const cmd = 'NODE_ENV=development parcel watch ' + ' ' + splitName
-        const args = [staticSrc + `/${file}`, '--out-dir ' + outDir, '--out-file ' + file + '-' + splitName + '.js', '--public-url /static/']
+        const cmd = `NODE_ENV=development parcel watch ${splitName}`
+        const args = [`${staticSrc}/${element}`, `--out-dir ${outDir}`, `--out-file ${file}-${splitName}.js`, '--public-url /static/']
         runWatchCommand(cmd, args)
       })
     } else {
       const cmd = 'NODE_ENV=development parcel watch'
-      const args = [staticSrc + '/index.js', '--out-dir ' + outDir, '--out-file ' + file + '.js', '--public-url /static/']
+      const args = [staticSrc + '/index.js', `--out-dir ${outDir}`, `--out-file ${file}.js`, '--public-url /static/']
       runWatchCommand(cmd, args)
     }
   }

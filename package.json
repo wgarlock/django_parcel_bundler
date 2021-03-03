@@ -1,6 +1,6 @@
 {
   "name": "django_parcel_bundler",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "quick tools to help develop static assets for django projects",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
