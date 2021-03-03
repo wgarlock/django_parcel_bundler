@@ -15,7 +15,7 @@ function parcelWatch (path) {
       entryPointsData.entry_points.forEach(element => {
         const splitName = element.split('.')[0]
         const cmd = 'NODE_ENV=development parcel watch ' + ' ' + splitName
-        const args = [staticSrc + '/index.js', '--out-dir ' + outDir, '--out-file ' + file + '-' + splitName + '.js', '--public-url /static/']
+        const args = [staticSrc + `/${file}`, '--out-dir ' + outDir, '--out-file ' + file + '-' + splitName + '.js', '--public-url /static/']
         runWatchCommand(cmd, args)
       })
     } else {

@@ -18,7 +18,7 @@ function parcelBuild (path) {
         if (fs.existsSync(staticSrc + '/' + element)) {
           const splitName = element.split('.')[0]
           const cmd = 'NODE_ENV=production parcel build' + ' ' + splitName
-          const args = [staticSrc + '/index.js', '--out-dir ' + outDir, '--out-file ' + file + '-' + splitName + '.' + packageJson.version + '.js', '--public-url /static/']
+          const args = [staticSrc + `/${file}`, '--out-dir ' + outDir, '--out-file ' + file + '-' + splitName + '.' + packageJson.version + '.js', '--public-url /static/']
           parcelBuildCommand(cmd, args, outDir, staticSrc, file, packageJson)
         }
       })
