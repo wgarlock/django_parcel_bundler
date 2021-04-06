@@ -1,16 +1,17 @@
 import { spawn } from 'child_process'
 import fs from 'fs'
-import getAllFiles from './parcel_support.js'
+import { getAllFiles, copyAssets } from './parcel_support.js'
 import process from 'process'
 
 function parcelWatch (path) {
-  const staticSrc = path + '/app_static_src'
+  const staticSrc = path + '/static_src'
   const file = path.substring(path.lastIndexOf('/') + 1)
 
   if (fs.existsSync(staticSrc)) {
     const entryPoints = `${staticSrc}/entry_points.json`
     const outDir = `${path}/static`
     if (fs.existsSync(entryPoints)) {
+      copyAssets('images', staticSrc, outDir, '')
       const entryPointsData = JSON.parse(fs.readFileSync(entryPoints, 'utf8'))
       entryPointsData.entry_points.forEach(element => {
         const splitName = element.split('.')[0]
