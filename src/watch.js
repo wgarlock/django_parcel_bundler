@@ -3,6 +3,7 @@ import fs from 'fs'
 import { getAllFiles, copyAssets } from './parcel_support.js'
 import process from 'process'
 
+const packageJson = JSON.parse(fs.readFileSync(process.cwd() + '/package.json', 'utf8'))
 function parcelWatch (path) {
   const staticSrc = path + '/static_src'
   const file = path.substring(path.lastIndexOf('/') + 1)
@@ -11,17 +12,17 @@ function parcelWatch (path) {
     const entryPoints = `${staticSrc}/entry_points.json`
     const outDir = `${path}/static`
     if (fs.existsSync(entryPoints)) {
-      copyAssets('images', staticSrc, outDir, '')
+      copyAssets('images', staticSrc, outDir, packageJson.version)
       const entryPointsData = JSON.parse(fs.readFileSync(entryPoints, 'utf8'))
       entryPointsData.entry_points.forEach(element => {
         const splitName = element.split('.')[0]
         const cmd = `NODE_ENV=development parcel watch ${splitName}`
-        const args = [`${staticSrc}/${element}`, `--out-dir ${outDir}`, `--out-file ${file}-${splitName}.js`, '--public-url /static/']
+        const args = [`${staticSrc}/${element}`, `--out-dir ${outDir}`, `--out-file ${file}-${splitName}.${packageJson.version}.js`, '--public-url /static/']
         runWatchCommand(cmd, args)
       })
     } else {
       const cmd = 'NODE_ENV=development parcel watch'
-      const args = [staticSrc + '/index.js', `--out-dir ${outDir}`, `--out-file ${file}.js`, '--public-url /static/']
+      const args = [staticSrc + '/index.js', `--out-dir ${outDir}`, `--out-file ${file}.${packageJson.version}.js`, '--public-url /static/']
       runWatchCommand(cmd, args)
     }
   }

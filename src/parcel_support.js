@@ -32,17 +32,19 @@ function copyAssets (directory, staticSrc, destination, packageVersion) {
   const targetDirSrc = `${staticSrc}/${directory}`
   const targetDirOut = `${destination}/${directory}`
   console.log('copy assets was called')
-  if (!fs.existsSync(targetDirOut)) {
-    fs.mkdirSync(targetDirOut, { recursive: true })
-  } else {
-    fs.rmdirSync(targetDirOut, { recursive: true })
-    fs.mkdirSync(targetDirOut, { recursive: true })
-  }
-  console.log('package_versio', packageVersion)
-  if (packageVersion === '') {
-    simpleCopy(targetDirSrc, targetDirOut)
-  } else {
-    versionedCopy(targetDirSrc, targetDirOut, packageVersion)
+  if (fs.existsSync(targetDirSrc)) {
+    if (!fs.existsSync(targetDirOut)) {
+      fs.mkdirSync(targetDirOut, { recursive: true })
+    } else {
+      fs.rmdirSync(targetDirOut, { recursive: true })
+      fs.mkdirSync(targetDirOut, { recursive: true })
+    }
+    console.log('package_versio', packageVersion)
+    if (packageVersion === '') {
+      simpleCopy(targetDirSrc, targetDirOut)
+    } else {
+      versionedCopy(targetDirSrc, targetDirOut, packageVersion)
+    }
   }
 }
 

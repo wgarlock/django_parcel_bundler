@@ -4,7 +4,6 @@ import { getAllFiles, copyAssets } from './parcel_support.js'
 import process from 'process'
 
 const packageJson = JSON.parse(fs.readFileSync(process.cwd() + '/package.json', 'utf8'))
-console.log(packageJson)
 function parcelBuild (path) {
   const staticSrc = path + '/static_src'
   const file = path.substring(path.lastIndexOf('/') + 1)
