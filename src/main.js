@@ -3,8 +3,8 @@ import runWatch from './watch'
 
 export default function buildAssets (options) {
   if (options.production) {
-    runBuild()
+    runBuild(false)
   } else {
-    runWatch()
+    runWatch(false)
   }
 }

@@ -1,0 +1,31 @@
+{
+    "name": "es_test_directory",
+    "version": "0.1.0",
+    "description": "",
+    "entry_points": [
+        "index.js"
+    ],
+    "static_resources": [
+        "images"
+    ],
+    "parcel_ignore_directories":[
+        "env",
+        "venv",
+        ".env",
+        ".venv",
+        "node_modules",
+        ".mypy_cache",
+        ".pytest_cache",
+        ".github",
+        ".circleci",
+        ".cache",
+        "dist",
+        "out",
+        "static",
+        "jest.config.js"
+    ],
+    "devDependencies": {
+        "cssnano": "^5.0.2",
+        "postcss": "^8.2.13"
+    }
+}
