@@ -3,7 +3,7 @@ import runWatch from './watch'
 
 export default function buildAssets (options) {
   if (options.production) {
-    runBuild(false)
+    let returnParcel = runBuild(false)
   } else {
     runWatch(false)
   }

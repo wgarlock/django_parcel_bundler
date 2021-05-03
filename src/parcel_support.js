@@ -161,7 +161,7 @@ function copyOperation (targetDirOut, targetDirSrc, file, versionFile) {
   return success
 }
 
-module.exports = {
+export {
   getFileName,
   copyOperation,
   runParcel,

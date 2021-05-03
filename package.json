@@ -1,6 +1,6 @@
 {
   "name": "django_parcel_bundler",
-  "version": "1.0.25",
+  "version": "1.1.2",
   "description": "quick tools to help develop static assets for django projects",
   "scripts": {
     "test": "jest"
@@ -36,7 +36,7 @@
     "url": "git+https://github.com/wgarlock/django_parcel_bundler.git"
   },
   "bin": {
-    "@wgarlock/django-parcel-bundler": "bin/django-parcel-bundler",
+    "tns/django-parcel-bundler": "bin/django-parcel-bundler",
     "django-parcel-bundler": "bin/django-parcel-bundler"
   },
   "publishConfig": {
