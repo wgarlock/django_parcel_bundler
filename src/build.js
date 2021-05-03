@@ -9,5 +9,5 @@ export default function runBuild (isTest) {
   const arrayOfFiles = []
   const commandsSet = new Set()
   console.log(runParcel)
-  return runParcel(currentDir, searchDir, 'watch', arrayOfFiles, commandsSet, isTest)
+  return runParcel(currentDir, searchDir, 'build', arrayOfFiles, commandsSet, isTest)
 }
